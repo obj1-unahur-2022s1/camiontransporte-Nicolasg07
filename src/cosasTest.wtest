@@ -1,2 +1,35 @@
 import camion.*
 import cosas.*
+
+test "embalando cosas" {
+	
+	residuosRadioactivos.setPeso(30)
+	embalajeSeguridad.cosaAEnvolver(residuosRadioactivos)
+	assert.equals(100, embalajeSeguridad.peligrosidad())
+	assert.equals(30, embalajeSeguridad.peso())
+}
+
+test "metiendo cosas al contenedor" {
+	
+	paqueteLadrillos.setLadrillos(60)
+	bumblebee.setAuto(false)
+	bateriaAntiarea.setMisiles(true)
+	contenedor.meterAlContenedor(paqueteLadrillos)
+	contenedor.meterAlContenedor(bumblebee)
+	contenedor.meterAlContenedor(bateriaAntiarea)
+	assert.equals(100, contenedor.peligrosidad())
+	assert.equals(1320, contenedor.peso())
+}
+
+test "paquete de 100 ladrillos" {
+	
+	paqueteLadrillos.setLadrillos(100)
+	assert.equals(200, paqueteLadrillos.peso())
+}
+
+test "bateria antiarea sin misiles" {
+	
+	bateriaAntiarea.setMisiles(false)
+	assert.notThat(bateriaAntiarea.tieneMisiles())
+	assert.equals(0, bateriaAntiarea.peligrosidad())
+}

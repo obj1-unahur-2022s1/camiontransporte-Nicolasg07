@@ -7,6 +7,8 @@ object camion {
 	
 	method descargar(cosa) { cosas.remove(cosa) }
 	
+	method todoPesoPar()= cosas.all({ c => c.peso().even() })
+	
 	method hayAlgunoQuePesa(peso)= cosas.any({ c => c.peso() == peso })
 	
 	method elDeNivel(nivel)= cosas.find({ c => c.peligrosidad() == nivel })
@@ -23,7 +25,7 @@ object camion {
 		return !self.excedidoDePeso() and cosas.all({ c => c.peligrosidad() < nivelMaximoPeligrosidad })
 	}
 	
-	method tieneAlgoQuePesaEntre(min, max)= cosas.any({ c => c.peso() > min and c.peso() < max })
+	method tieneAlgoQuePesaEntre(min, max)= cosas.any({ c => (c.peso() > min) and (c.peso() < max) })
 	
 	method cosaMasPesada()= cosas.max({ c => c.peso() })
 	
