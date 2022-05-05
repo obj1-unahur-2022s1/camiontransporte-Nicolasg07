@@ -1,0 +1,28 @@
+import camion2.*
+import cosas2.*
+	
+test "bultos ladrillitos" {
+		
+		paqueteLadrillos.setLadrillos(50)
+		assert.equals(1, paqueteLadrillos.bultos())
+		paqueteLadrillos.setLadrillos(234)
+		assert.equals(2, paqueteLadrillos.bultos())
+		paqueteLadrillos.setLadrillos(301)
+		assert.equals(3, paqueteLadrillos.bultos())
+	}
+
+test "bultos bateria antaerea" {
+	
+	bateriaAntiarea.setMisiles(true)
+	assert.equals(2, bateriaAntiarea.bultos())
+	bateriaAntiarea.setMisiles(false)
+	assert.equals(1, bateriaAntiarea.bultos())
+}
+
+test "bultos contenedor" {
+	
+	arena.setPeso(20)
+	contenedor.meterAlContenedor(bumblebee)
+	contenedor.meterAlContenedor(arena)
+	assert.equals(4, contenedor.bultos())
+}

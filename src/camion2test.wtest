@@ -1,6 +1,18 @@
+import camion2.*
+import cosas2.*
 
-test "testX" {
+test "tests de los bultos" {
 
-	assert.that(true)
-
+	bumblebee.setAuto(false)
+	arena.setPeso(150)
+	bateriaAntiarea.setMisiles(true)
+	paqueteLadrillos.setLadrillos(80)
+	embalajeSeguridad.cosaAEnvolver(paqueteLadrillos)
+	
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(embalajeSeguridad)
+	
+	assert.equals(7, camion.totalBultos())
 }
