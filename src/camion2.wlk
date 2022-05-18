@@ -25,7 +25,9 @@ object camion {
 	
 	method objetosQueSuperanPeligrosidad(nivel)= cosas.filter({ c => c.peligrosidad() > nivel })
 	
-	method objetosMasPeligrososQue(cosa)= cosas.filter({ c => c.peligrosidad() > cosa.peligrosidad() })
+	/* Podias reutilizar  objetosQueSuperanPeligrosidad(nivel) */
+	//method objetosMasPeligrososQue(cosa)= cosas.filter({ c => c.peligrosidad() > cosa.peligrosidad() })
+	method objetosMasPeligrososQue(cosa)= self.objetosQueSuperanPeligrosidad(cosa.peligrosidad())
 	
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad) {
 		return !self.excedidoDePeso() and cosas.all({ c => c.peligrosidad() < nivelMaximoPeligrosidad })
